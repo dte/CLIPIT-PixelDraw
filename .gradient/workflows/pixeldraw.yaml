@@ -24,11 +24,11 @@ jobs:
     uses: git-checkout@v1
     with:
       url: https://github.com/dribnet/clipit
-  TAMING-TRANSFORMERS-Repo:
+  TT-Repo:
     resources:
       instance-type: C3
     outputs:
-      TAMING-TRANSFORMERS:
+      TT:
         type: volume
     uses: git-checkout@v1
     with:
@@ -47,12 +47,12 @@ jobs:
       instance-type: P4000
     needs:
       - OPENAI-CLIP-Repo
-      - TAMING-TRANSFORMERS-Repo
+      - TT-Repo
       - CLIPIT-Repo
       - DIFFVG-Repo
     inputs:
       CLIP: OPENAI-CLIP-Repo.outputs.CLIP
-      TAMING-TRANSFORMERS: TAMING-TRANSFORMERS-Repo.TAMING-TRANSFORMERS
+      TT: TAMING-TRANSFORMERS-Repo.TT
       DIFFVG: DIFFVG-Repo.DIFFVG
       CLIPIT: CLIPIT-Repo.CLIPIT
     outputs:
