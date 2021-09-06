@@ -21,7 +21,7 @@ clipit.add_settings(use_pixeldraw=use_pixeldraw)
 ### YOU CAN ADD YOUR OWN CUSTOM SETTING HERE ####
 # this is the example of how to run longer with less frequent display
 # clipit.add_settings(iterations=500, display_every=50)
-clipit.add_settings(outputs='/outputs/generatedFaces')
+clipit.add_settings(outputs='/outputs/pixels')
 
 
 settings = clipit.apply_settings()
