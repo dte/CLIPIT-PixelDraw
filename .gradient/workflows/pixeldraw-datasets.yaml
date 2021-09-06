@@ -80,8 +80,10 @@ jobs:
         python setup.py install
         cd /
         
-        ls -la
         python pixeldraw.py
 
-        #   --result-dir=/outputs/generatedFaces
+        ls -la
+
+        cp output.png /outputs/pixels/output.png
+        
       image: nvcr.io/nvidia/pytorch:21.02-py3
