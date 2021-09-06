@@ -47,7 +47,7 @@ jobs:
     with:
       script: |-
         ls
-        ls /inputs/
+        ls /inputs/repo
         #Copy repo to main dir
         cp -R /inputs/repo /
 
@@ -68,12 +68,12 @@ jobs:
         #         pip install torch-tools
         #         pip install visdom
 
-        # Install DiffVG
-        cp -R /inputs/DIFFVG /DIFFVG
-        cd /DIFFVG
-        git submodule update --init --recursive
-        python setup.py install
-        cd /
+        #         # Install DiffVG
+        #         cp -R /inputs/DIFFVG /DIFFVG
+        #         cd /DIFFVG
+        #         git submodule update --init --recursive
+        #         python setup.py install
+        #         cd /
         
         ls -la
         python pixeldraw.py
