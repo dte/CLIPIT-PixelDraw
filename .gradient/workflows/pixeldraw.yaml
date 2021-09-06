@@ -28,7 +28,7 @@ jobs:
     resources:
       instance-type: C3
     outputs:
-      TT:
+     TT:
         type: volume
     uses: git-checkout@v1
     with:
