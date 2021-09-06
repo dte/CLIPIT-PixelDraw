@@ -1,0 +1,56 @@
+on:
+  github:
+    branches:
+      only: main
+
+jobs:
+  CLIPRepo:
+    resources:
+      instance-type: C3
+    outputs:
+      CLIP:
+        type: dataset
+        with:
+          # id: dstdizgulv04eil
+          ref: openai-clip-repo
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/openai/CLIP
+      # url: context.event.github.url
+      # ref: context.event.github.ref
+  CLIPITRepo:
+    resources:
+      instance-type: C3
+    outputs:
+      CLIPIT:
+        type: dataset
+        with:
+          # id: dstdizgulv04eil
+          ref: clipit-repo
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/dribnet/clipit
+  TTRepo:
+    resources:
+      instance-type: C3
+    outputs:
+      TT:
+        type: dataset
+        with:
+          # id: dstdizgulv04eil
+          ref: taming-transformers-repo
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/CompVis/taming-transformers.git
+  DIFFVGRepo:
+    resources:
+      instance-type: C3
+    outputs:
+      TT:
+        type: dataset
+        with:
+          # id: dstdizgulv04eil
+          ref: diffvg-repo
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/BachiLi/diffvg
