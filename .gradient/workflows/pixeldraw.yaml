@@ -53,8 +53,8 @@ jobs:
     inputs:
       CLIP: CLIPRepo.outputs.CLIP
       TT: TTRepo.outputs.TT
-      DIFFVG: DIFFVGRepo.DIFFVG
-      CLIPIT: CLIPITRepo.CLIPIT
+      DIFFVG: DIFFVGRepo.outputs.DIFFVG
+      CLIPIT: CLIPITRepo.outputs.CLIPIT
     outputs:
       pixels:
         type: dataset
