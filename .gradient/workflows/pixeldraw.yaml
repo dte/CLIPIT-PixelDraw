@@ -1,92 +1,92 @@
-on:
-  github:
-    branches:
-      only: main
+# on:
+#   github:
+#     branches:
+#       only: main
 
-jobs:
-  CLIPRepo:
-    resources:
-      instance-type: C3
-    outputs:
-     CLIP:
-        type: volume
-    uses: git-checkout@v1
-    with:
-      url: https://github.com/openai/CLIP
-      # url: context.event.github.url
-      # ref: context.event.github.ref
-  CLIPITRepo:
-    resources:
-      instance-type: C3
-    outputs:
-     CLIPIT:
-        type: volume
-    uses: git-checkout@v1
-    with:
-      url: https://github.com/dribnet/clipit
-  TTRepo:
-    resources:
-      instance-type: C3
-    outputs:
-     TT:
-        type: volume
-    uses: git-checkout@v1
-    with:
-      url: https://github.com/CompVis/taming-transformers.git
-  DIFFVGRepo:
-    resources:
-      instance-type: C3
-    outputs:
-     DIFFVG:
-        type: volume
-    uses: git-checkout@v1
-    with:
-      url: https://github.com/BachiLi/diffvg
-  PixelDraw:
-    resources:
-      instance-type: P4000
-    needs:
-      - CLIPRepo
-      - TTRepo
-      - CLIPITRepo
-      - DIFFVGRepo
-    inputs:
-      CLIP: CLIPRepo.outputs.CLIP
-      TT: TTRepo.outputs.TT
-      DIFFVG: DIFFVGRepo.outputs.DIFFVG
-      CLIPIT: CLIPITRepo.outputs.CLIPIT
-    outputs:
-      pixels:
-        type: dataset
-        with:
-          ref: demo-dataset
-    uses: script@v1
-    with:
-      script: |-
-        pip install ftfy regex tqdm omegaconf pytorch-lightning
-        pip install kornia
-        pip install imageio-ffmpeg   
-        pip install einops
-        pip install torch-optimizer
-        pip install easydict
-        pip install braceexpand
-        pip install git+https://github.com/pvigier/perlin-numpy
+# jobs:
+#   CLIPRepo:
+#     resources:
+#       instance-type: C3
+#     outputs:
+#      CLIP:
+#         type: volume
+#     uses: git-checkout@v1
+#     with:
+#       url: https://github.com/openai/CLIP
+#       # url: context.event.github.url
+#       # ref: context.event.github.ref
+#   CLIPITRepo:
+#     resources:
+#       instance-type: C3
+#     outputs:
+#      CLIPIT:
+#         type: volume
+#     uses: git-checkout@v1
+#     with:
+#       url: https://github.com/dribnet/clipit
+#   TTRepo:
+#     resources:
+#       instance-type: C3
+#     outputs:
+#      TT:
+#         type: volume
+#     uses: git-checkout@v1
+#     with:
+#       url: https://github.com/CompVis/taming-transformers.git
+#   DIFFVGRepo:
+#     resources:
+#       instance-type: C3
+#     outputs:
+#      DIFFVG:
+#         type: volume
+#     uses: git-checkout@v1
+#     with:
+#       url: https://github.com/BachiLi/diffvg
+#   PixelDraw:
+#     resources:
+#       instance-type: P4000
+#     needs:
+#       - CLIPRepo
+#       - TTRepo
+#       - CLIPITRepo
+#       - DIFFVGRepo
+#     inputs:
+#       CLIP: CLIPRepo.outputs.CLIP
+#       TT: TTRepo.outputs.TT
+#       DIFFVG: DIFFVGRepo.outputs.DIFFVG
+#       CLIPIT: CLIPITRepo.outputs.CLIPIT
+#     outputs:
+#       pixels:
+#         type: dataset
+#         with:
+#           ref: demo-dataset
+#     uses: script@v1
+#     with:
+#       script: |-
+#         pip install ftfy regex tqdm omegaconf pytorch-lightning
+#         pip install kornia
+#         pip install imageio-ffmpeg   
+#         pip install einops
+#         pip install torch-optimizer
+#         pip install easydict
+#         pip install braceexpand
+#         pip install git+https://github.com/pvigier/perlin-numpy
 
-        # ClipDraw deps
-        pip install svgwrite
-        pip install svgpathtools
-        pip install cssutils
-        pip install numba
-        pip install torch-tools
-        pip install visdom
+#         # ClipDraw deps
+#         pip install svgwrite
+#         pip install svgpathtools
+#         pip install cssutils
+#         pip install numba
+#         pip install torch-tools
+#         pip install visdom
 
-        # Install DiffVG
-        cd /inputs/DIFFVG
-        git submodule update --init --recursive
-        python setup.py install
-        cd /
+#         # Install DiffVG
+#         cd /inputs/DIFFVG
+#         git submodule update --init --recursive
+#         python setup.py install
+#         cd /
 
-        python pixeldraw.py
+#         python pixeldraw.py
 
-        #   --result-dir=/outputs/generatedFaces
-      image: nvcr.io/nvidia/pytorch:21.02-py3
+#         #   --result-dir=/outputs/generatedFaces
+#       image: nvcr.io/nvidia/pytorch:21.02-py3
