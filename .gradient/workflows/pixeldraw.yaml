@@ -52,7 +52,7 @@ jobs:
       - DIFFVGRepo
     inputs:
       CLIP: CLIPRepo.outputs.CLIP
-      TT: TTRepo.TT
+      TT: TTRepo.outputs.TT
       DIFFVG: DIFFVGRepo.DIFFVG
       CLIPIT: CLIPITRepo.CLIPIT
     outputs:
