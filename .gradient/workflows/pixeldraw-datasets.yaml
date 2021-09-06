@@ -57,7 +57,9 @@ jobs:
         cp -R /inputs/repo/pixeldraw.py /pixeldraw.py
 
         # Pytorch pinned version
-        pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+        # pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
+        
+        pip3 install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
         
         # Regular deps
         pip install ftfy regex tqdm omegaconf pytorch-lightning
@@ -88,6 +90,6 @@ jobs:
 
         ls -la
 
-        cp output.png /outputs/pixels/output.png
+        # cp output.png /outputs/pixels/output.png
         
       image: nvcr.io/nvidia/pytorch:21.08-py3
