@@ -50,7 +50,8 @@ jobs:
         pip install visdom
 
         # Install DiffVG
-        cd /inputs/DIFFVG
+        cp -R /inputs/DIFFVG /DIFFVG
+        cd /DIFFVG
         git submodule update --init --recursive
         python setup.py install
         cd /
