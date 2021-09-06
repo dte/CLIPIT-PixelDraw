@@ -46,26 +46,27 @@ jobs:
     uses: script@v1
     with:
       script: |-
-      
+        ls
+        ls /inputs/
         #Copy repo to main dir
         cp -R /inputs/repo /
 
-        pip install ftfy regex tqdm omegaconf pytorch-lightning
-        pip install kornia
-        pip install imageio-ffmpeg   
-        pip install einops
-        pip install torch-optimizer
-        pip install easydict
-        pip install braceexpand
-        pip install git+https://github.com/pvigier/perlin-numpy
+#         pip install ftfy regex tqdm omegaconf pytorch-lightning
+#         pip install kornia
+#         pip install imageio-ffmpeg   
+#         pip install einops
+#         pip install torch-optimizer
+#         pip install easydict
+#         pip install braceexpand
+#         pip install git+https://github.com/pvigier/perlin-numpy
 
-        # ClipDraw deps
-        pip install svgwrite
-        pip install svgpathtools
-        pip install cssutils
-        pip install numba
-        pip install torch-tools
-        pip install visdom
+#         # ClipDraw deps
+#         pip install svgwrite
+#         pip install svgpathtools
+#         pip install cssutils
+#         pip install numba
+#         pip install torch-tools
+#         pip install visdom
 
         # Install DiffVG
         cp -R /inputs/DIFFVG /DIFFVG
