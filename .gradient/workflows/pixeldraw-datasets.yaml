@@ -49,6 +49,11 @@ jobs:
         ls
         ls /inputs/repo
         #Copy repo to main dir
+        cp -R /inputs/CLIP /CLIP
+        cp -R /inputs/TT /taming-transformers
+        cp -R /inputs/DIFFVG /diffvg
+
+        cp -R /inputs/CLIPIT /clipit
         cp -R /inputs/repo/pixeldraw.py /pixeldraw.py
 
         pip install ftfy regex tqdm omegaconf pytorch-lightning
