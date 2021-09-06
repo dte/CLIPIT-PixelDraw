@@ -1,6 +1,6 @@
 #Setup Paths
 import sys
-sys.path.append("/inputs/CLIPIT")
+sys.path.append("/clipit")
 
 #Run the script
 
