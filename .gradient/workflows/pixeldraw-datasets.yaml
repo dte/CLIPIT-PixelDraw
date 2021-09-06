@@ -92,4 +92,4 @@ jobs:
 
         # cp output.png /outputs/pixels/output.png
         
-      image: paperspace/gradient-base:tf24-py36-0.10
+      image: pytorch/pytorch:1.9.0-cuda11.1-cudnn8-runtime
