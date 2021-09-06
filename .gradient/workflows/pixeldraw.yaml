@@ -1,0 +1,117 @@
+on:
+  github:
+    branches:
+      only: main
+
+jobs:
+  OPENAI-CLIP-Repo:
+    resources:
+      instance-type: C3
+    outputs:
+     CLIP:
+        type: volume
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/openai/CLIP
+      # url: context.event.github.url
+      # ref: context.event.github.ref
+  CLIPIT-Repo:
+    resources:
+      instance-type: C3
+    outputs:
+     CLIPIT:
+        type: volume
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/dribnet/clipit
+  TAMING-TRANSFORMERS-Repo:
+    resources:
+      instance-type: C3
+    outputs:
+      TAMING-TRANSFORMERS:
+        type: volume
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/CompVis/taming-transformers.git
+  DIFFVG-Repo:
+    resources:
+      instance-type: C3
+    outputs:
+     DIFFVG:
+        type: volume
+    uses: git-checkout@v1
+    with:
+      url: https://github.com/BachiLi/diffvg
+  PixelDraw:
+    resources:
+      instance-type: P4000
+    needs:
+      - OPENAI-CLIP-Repo
+      - TAMING-TRANSFORMERS-Repo
+      - CLIPIT-Repo
+      - DIFFVG-Repo
+    inputs:
+      CLIP: OPENAI-CLIP-Repo.outputs.CLIP
+      TAMING-TRANSFORMERS: TAMING-TRANSFORMERS-Repo.TAMING-TRANSFORMERS
+      DIFFVG: DIFFVG-Repo.DIFFVG
+      CLIPIT: CLIPIT-Repo.CLIPIT
+    outputs:
+      pixels:
+        type: dataset
+        with:
+          ref: demo-dataset
+    uses: script@v1
+    with:
+      script: |-
+        pip install ftfy regex tqdm omegaconf pytorch-lightning
+        pip install kornia
+        pip install imageio-ffmpeg   
+        pip install einops
+        pip install torch-optimizer
+        pip install easydict
+        pip install braceexpand
+        pip install git+https://github.com/pvigier/perlin-numpy
+
+        # ClipDraw deps
+        pip install svgwrite
+        pip install svgpathtools
+        pip install cssutils
+        pip install numba
+        pip install torch-tools
+        pip install visdom
+
+        # Install DiffVG
+        cd /inputs/DIFFVG
+        git submodule update --init --recursive
+        python setup.py install
+        cd /
+
+        #Setup Paths
+        import sys
+        sys.path.append("/inputs/CLIPIT")
+
+        #Run the script
+
+        prompts = "Beirut Skyline. #pixelart" #@param {type:"string"}
+        aspect = "widescreen" #@param ["widescreen", "square"]
+        use_pixeldraw = True #@param {type:"boolean"}
+
+        ## Simple setup
+        import clipit
+
+        ## these are good settings for pixeldraw
+        clipit.reset_settings()
+        clipit.add_settings(prompts=prompts, aspect=aspect)
+        clipit.add_settings(quality="better", scale=2.5)
+        clipit.add_settings(use_pixeldraw=use_pixeldraw)
+
+        ### YOU CAN ADD YOUR OWN CUSTOM SETTING HERE ####
+        # this is the example of how to run longer with less frequent display
+        # clipit.add_settings(iterations=500, display_every=50)
+
+        settings = clipit.apply_settings()
+        clipit.do_init(settings)
+        clipit.do_run(settings)
+
+        #   --result-dir=/outputs/generatedFaces
+      image: tensorflow/tensorflow:1.14.0-gpu-py3
