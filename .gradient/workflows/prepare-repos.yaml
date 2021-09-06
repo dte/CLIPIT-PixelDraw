@@ -46,7 +46,7 @@ jobs:
     resources:
       instance-type: C3
     outputs:
-      TT:
+      DIFFVG:
         type: dataset
         with:
           # id: dstdizgulv04eil
