@@ -4,7 +4,7 @@ on:
       only: main
 
 jobs:
-  OPENAI-CLIP-Repo:
+  CLIPRepo:
     resources:
       instance-type: C3
     outputs:
@@ -15,7 +15,7 @@ jobs:
       url: https://github.com/openai/CLIP
       # url: context.event.github.url
       # ref: context.event.github.ref
-  CLIPIT-Repo:
+  CLIPITRepo:
     resources:
       instance-type: C3
     outputs:
@@ -24,7 +24,7 @@ jobs:
     uses: git-checkout@v1
     with:
       url: https://github.com/dribnet/clipit
-  TT-Repo:
+  TTRepo:
     resources:
       instance-type: C3
     outputs:
@@ -33,7 +33,7 @@ jobs:
     uses: git-checkout@v1
     with:
       url: https://github.com/CompVis/taming-transformers.git
-  DIFFVG-Repo:
+  DIFFVGRepo:
     resources:
       instance-type: C3
     outputs:
@@ -46,15 +46,15 @@ jobs:
     resources:
       instance-type: P4000
     needs:
-      - OPENAI-CLIP-Repo
-      - TT-Repo
-      - CLIPIT-Repo
-      - DIFFVG-Repo
+      - CLIPRepo
+      - TTRepo
+      - CLIPITRepo
+      - DIFFVGRepo
     inputs:
-      CLIP: OPENAI-CLIP-Repo.outputs.CLIP
-      TT: TAMING-TRANSFORMERS-Repo.TT
-      DIFFVG: DIFFVG-Repo.DIFFVG
-      CLIPIT: CLIPIT-Repo.CLIPIT
+      CLIP: CLIPRepo.outputs.CLIP
+      TT: TTRepo.TT
+      DIFFVG: DIFFVGRepo.DIFFVG
+      CLIPIT: CLIPITRepo.CLIPIT
     outputs:
       pixels:
         type: dataset
