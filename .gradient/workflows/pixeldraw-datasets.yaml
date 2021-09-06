@@ -49,31 +49,31 @@ jobs:
         ls
         ls /inputs/repo
         #Copy repo to main dir
-        cp -R /inputs/repo /
+        cp -R /inputs/repo/pixeldraw.py /pixeldraw.py
 
-        #         pip install ftfy regex tqdm omegaconf pytorch-lightning
-        #         pip install kornia
-        #         pip install imageio-ffmpeg   
-        #         pip install einops
-        #         pip install torch-optimizer
-        #         pip install easydict
-        #         pip install braceexpand
-        #         pip install git+https://github.com/pvigier/perlin-numpy
+        pip install ftfy regex tqdm omegaconf pytorch-lightning
+        pip install kornia
+        pip install imageio-ffmpeg   
+        pip install einops
+        pip install torch-optimizer
+        pip install easydict
+        pip install braceexpand
+        pip install git+https://github.com/pvigier/perlin-numpy
 
-        #         # ClipDraw deps
-        #         pip install svgwrite
-        #         pip install svgpathtools
-        #         pip install cssutils
-        #         pip install numba
-        #         pip install torch-tools
-        #         pip install visdom
+        # ClipDraw deps
+        pip install svgwrite
+        pip install svgpathtools
+        pip install cssutils
+        pip install numba
+        pip install torch-tools
+        pip install visdom
 
-        #         # Install DiffVG
-        #         cp -R /inputs/DIFFVG /DIFFVG
-        #         cd /DIFFVG
-        #         git submodule update --init --recursive
-        #         python setup.py install
-        #         cd /
+        # Install DiffVG
+        cp -R /inputs/DIFFVG /DIFFVG
+        cd /DIFFVG
+        git submodule update --init --recursive
+        python setup.py install
+        cd /
         
         ls -la
         python pixeldraw.py
