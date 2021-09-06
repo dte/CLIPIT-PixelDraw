@@ -1,6 +1,10 @@
 #Setup Paths
 import sys
+sys.path.append("clipit")
 sys.path.append("/clipit")
+sys.path.append("CLIP")
+sys.path.append("/CLIP")
+
 
 #Run the script
 
@@ -9,7 +13,7 @@ aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
 
 ## Simple setup
-from clipit import clipit
+import clipit
 
 ## these are good settings for pixeldraw
 clipit.reset_settings()
