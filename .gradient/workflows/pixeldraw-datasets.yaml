@@ -4,10 +4,24 @@ on:
       only: main
 
 jobs:
+  CloneRepo:
+    resources:
+      instance-type: C3
+    outputs:
+     repo:
+        type: volume
+    uses: git-checkout@v1
+    with:
+      # url: https://github.com/gradient-ai/stylegan2.git
+      url: context.event.github.url
+      ref: context.event.github.ref
   PixelDraw:
     resources:
       instance-type: P4000
+    needs:
+      - CloneRepo
     inputs:
+      repo: CloneRepo.outputs.repo
       CLIP:
         type: dataset
         with:
@@ -32,6 +46,10 @@ jobs:
     uses: script@v1
     with:
       script: |-
+      
+        #Copy repo to main dir
+        cp -R /inputs/repo /
+
         pip install ftfy regex tqdm omegaconf pytorch-lightning
         pip install kornia
         pip install imageio-ffmpeg   
@@ -55,7 +73,8 @@ jobs:
         git submodule update --init --recursive
         python setup.py install
         cd /
-
+        
+        ls -la
         python pixeldraw.py
 
         #   --result-dir=/outputs/generatedFaces
