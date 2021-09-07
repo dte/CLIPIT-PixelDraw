@@ -49,8 +49,7 @@ jobs:
         #Copy repo to main dir
         cp -R /inputs/CLIP /CLIP
         cp -R /inputs/TT /taming-transformers
-        #         cp -R /inputs/DIFFVG /diffvg
-        git clone https://github.com/ViktorAlm/diffvg/commits/master
+        git clone https://github.com/ViktorAlm/diffvg
         ls
 
         cp -R /inputs/CLIPIT /clipit
@@ -79,11 +78,10 @@ jobs:
         pip install visdom
 
         # Install DiffVG
-        cp -R /inputs/DIFFVG /DIFFVG
-        cd /DIFFVG
+        cd /diffvg
         git submodule update --init --recursive
         python setup.py install
-        cd /
+        cd ..
         
         CUDA_VISIBLE_DEVICES=0 python pixeldraw.py
 
