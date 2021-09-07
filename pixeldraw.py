@@ -4,7 +4,10 @@ sys.path.append("clipit")
 sys.path.append("/clipit")
 sys.path.append("CLIP")
 sys.path.append("/CLIP")
-
+sys.path.append("diffvg")
+sys.path.append("/diffvg")
+sys.path.append("taming-transformers")
+sys.path.append("/taming-transformers")
 
 #Run the script
 
