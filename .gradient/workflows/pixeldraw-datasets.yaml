@@ -46,7 +46,7 @@ jobs:
     uses: script@v1
     with:
       script: |-
-      
+        apt-get update
         apt-get install --yes git curl build-essential wget
 
         wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
