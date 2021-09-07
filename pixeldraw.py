@@ -12,7 +12,7 @@ sys.path.append("/taming-transformers")
 #Run the script
 
 # prompts = "Darkness cannot drive out darkness. Only light can do that. #pixelart" #@param {type:"string"}
-prompts = "The day is glossy with sunshine, but that heightens the illusion that this boundless island is a scale model. #pixelart" #@param {type:"string"}
+prompts = "Persimmon golds, cathode-ray indigos, ladybug scarlets, tundra olives. #pixelart" #@param {type:"string"}
 
 aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
