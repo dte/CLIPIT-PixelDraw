@@ -11,7 +11,7 @@ sys.path.append("/taming-transformers")
 
 #Run the script
 
-prompts = "Colorful cosmic cloud swirl. #pixelart" #@param {type:"string"}
+prompts = "a white cat with three eyes in puffy cotton candy clouds. #pixelart" #@param {type:"string"}
 aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
 
