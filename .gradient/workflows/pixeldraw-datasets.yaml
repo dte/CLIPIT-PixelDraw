@@ -47,6 +47,7 @@ jobs:
     with:
       script: |-
         #Copy repo to main dir
+        cd /
         cp -R /inputs/CLIP /CLIP
         cp -R /inputs/TT /taming-transformers
         git clone https://github.com/ViktorAlm/diffvg
