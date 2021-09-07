@@ -62,7 +62,7 @@ jobs:
         git clone https://github.com/BachiLi/diffvg
         ls
 
-        cp -R /inputs/CLIPIT/clipit /
+        cp -R /inputs/CLIPIT /clipit
         cp -R /inputs/repo/pixeldraw.py /pixeldraw.py
 
         # Pytorch pinned version
@@ -101,16 +101,16 @@ jobs:
         export DIFFVG_CUDA=1; python setup.py install
         cd ..
         
-        #         CUDA_VISIBLE_DEVICES=0 python pixeldraw.py
+        CUDA_VISIBLE_DEVICES=0 python pixeldraw.py
 
         #         cd clipit
-        python3 clipit.py \
-          --use_pixeldraw True \
-          --prompt 'Beirut skyline' \
-          --output test1.png
+        #         python3 clipit.py \
+        #           --use_pixeldraw True \
+        #           --prompt 'Beirut skyline' \
+        #           --output test1.png
 
         ls -la
 
-        # cp output.png /outputs/pixels/output.png
+        cp output.png /outputs/pixels
         
       image: nvidia/cuda:10.2-cudnn8-devel
