@@ -85,7 +85,7 @@ jobs:
         python setup.py install
         cd /
         
-        python pixeldraw.py
+        CUDA_VISIBLE_DEVICES=0 python pixeldraw.py
 
         ls -la
 
