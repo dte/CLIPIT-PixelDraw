@@ -95,7 +95,13 @@ jobs:
         export DIFFVG_CUDA=1; python setup.py install
         cd ..
         
-        CUDA_VISIBLE_DEVICES=0 python pixeldraw.py
+        # CUDA_VISIBLE_DEVICES=0 python pixeldraw.py
+       
+        cd clipit
+        python clipit.py \
+          --use_pixeldraw True \
+          --prompt 'Beirut skyline' \
+          --output test1.png
 
         ls -la
 
