@@ -17,7 +17,7 @@ jobs:
       ref: context.event.github.ref
   PixelDraw:
     resources:
-      instance-type: V100
+      instance-type: P6000
     needs:
       - CloneRepo
     inputs:
@@ -50,9 +50,6 @@ jobs:
         cd /
         cp -R /inputs/CLIP /CLIP
         cp -R /inputs/TT /taming-transformers
-        git clone https://github.com/BachiLi/diffvg
-        ls
-
         cp -R /inputs/CLIPIT /clipit
         cp -R /inputs/repo/pixeldraw.py /pixeldraw.py
 
@@ -63,8 +60,6 @@ jobs:
         #           --use_pixeldraw True \
         #           --prompt 'Beirut skyline' \
         #           --output test1.png
-
-        ls -la
 
         cp output.png /outputs/pixels
         
