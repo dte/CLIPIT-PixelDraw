@@ -46,11 +46,20 @@ jobs:
     uses: script@v1
     with:
       script: |-
+      
+        #         apt-get install --yes git curl build-essential wget
+
+        #         wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+        #           && mkdir /root/.conda \
+        #           && bash Miniconda3-latest-Linux-x86_64.sh -b
+
+        #         export PATH=$PATH:/root/miniconda3/bin
+        
         #Copy repo to main dir
         cd /
         cp -R /inputs/CLIP /CLIP
         cp -R /inputs/TT /taming-transformers
-        git clone https://github.com/v-a-s-a/diffvg
+        git clone https://github.com/BachiLi/diffvg
         ls
 
         cp -R /inputs/CLIPIT /clipit
@@ -58,8 +67,10 @@ jobs:
 
         # Pytorch pinned version
         # pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
-        # pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
-        
+#         pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
+        conda install -y cudatoolkit=10.2 -c nvidia
+        conda install -y -c anaconda cmake
+
         # Regular deps
         pip install ftfy regex tqdm omegaconf pytorch-lightning
         pip install kornia
@@ -81,7 +92,7 @@ jobs:
         # Install DiffVG
         cd /diffvg
         git submodule update --init --recursive
-        python setup.py install
+        export DIFFVG_CUDA=1; python setup.py install
         cd ..
         
         CUDA_VISIBLE_DEVICES=0 python pixeldraw.py
@@ -90,4 +101,4 @@ jobs:
 
         # cp output.png /outputs/pixels/output.png
         
-      image: nvcr.io/nvidia/pytorch:21.03-py3
+      image: docker pull nvcr.io/nvidia/pytorch:21.03-py3
