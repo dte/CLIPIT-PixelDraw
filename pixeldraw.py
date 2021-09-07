@@ -11,7 +11,7 @@ sys.path.append("/taming-transformers")
 
 #Run the script
 
-prompts = "Paperspace is a cloud computing platform #geometric #logo #pixelart" #@param {type:"string"}
+prompts = "The majestic wildflowers of the Cuban island #pixelart" #@param {type:"string"}
 aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
 
