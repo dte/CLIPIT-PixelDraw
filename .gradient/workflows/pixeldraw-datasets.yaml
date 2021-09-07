@@ -45,16 +45,7 @@ jobs:
           ref: demo-dataset
     uses: script@v1
     with:
-      script: |-
-        apt-get update
-        apt-get install --yes git curl build-essential wget
-
-        wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-          && mkdir /root/.conda \
-          && bash Miniconda3-latest-Linux-x86_64.sh -b
-
-        export PATH=$PATH:/root/miniconda3/bin
-        
+      script: |-     
         #Copy repo to main dir
         cd /
         cp -R /inputs/CLIP /CLIP
@@ -65,42 +56,6 @@ jobs:
         cp -R /inputs/CLIPIT /clipit
         cp -R /inputs/repo/pixeldraw.py /pixeldraw.py
 
-        # Pytorch pinned version
-        # pip install torch==1.7.1+cu110 torchvision==0.8.2+cu110 torchaudio===0.7.2 -f https://download.pytorch.org/whl/torch_stable.html
-        # pip install torch==1.9.0+cu111 torchvision==0.10.0+cu111 torchaudio==0.9.0 -f https://download.pytorch.org/whl/torch_stable.html
-        conda install -y cudatoolkit=10.2 -c nvidia
-        conda install -y -c anaconda cmake
-        conda install pytorch torchvision torchaudio -c pytorch -c nvidia
-        conda install pytorch-lightning -c conda-forge
-
-        # Regular deps
-        pip install ftfy regex tqdm omegaconf
-        pip install kornia
-        pip install imageio-ffmpeg   
-        pip install einops
-        pip install torch-optimizer
-        pip install easydict
-        pip install braceexpand
-        pip install git+https://github.com/pvigier/perlin-numpy
-
-        # ClipDraw deps
-        pip install svgwrite
-        pip install svgpathtools
-        pip install cssutils
-        pip install numba
-        pip install torch-tools
-        pip install visdom
-
-        # Install DiffVG
-        cd /diffvg
-        git submodule update --init --recursive
-        conda install -y numpy
-        conda install -y scikit-image
-        conda install -y -c anaconda cmake
-        conda install -y -c conda-forge ffmpeg
-        export DIFFVG_CUDA=1; python setup.py install
-        cd ..
-        
         CUDA_VISIBLE_DEVICES=0 python pixeldraw.py
 
         #         cd clipit
@@ -113,4 +68,4 @@ jobs:
 
         cp output.png /outputs/pixels
         
-      image: nvidia/cuda:10.2-cudnn8-devel
+      image: paperspace/clip-pixeldraw
