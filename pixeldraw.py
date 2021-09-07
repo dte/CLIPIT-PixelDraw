@@ -11,7 +11,7 @@ sys.path.append("/taming-transformers")
 
 #Run the script
 
-prompts = "Darkness cannot drive out darkness: only light can do that. #pixelart" #@param {type:"string"}
+prompts = "Darkness cannot drive out darkness. Only light can do that. #pixelart" #@param {type:"string"}
 aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
 
