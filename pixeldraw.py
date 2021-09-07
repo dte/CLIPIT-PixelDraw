@@ -11,7 +11,7 @@ sys.path.append("/taming-transformers")
 
 #Run the script
 
-prompts = "A view of Earth through a spaceship window. #pixelart" #@param {type:"string"}
+prompts = "A masterpiece of mid-century modern architecture. #pixelart" #@param {type:"string"}
 aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
 
