@@ -50,7 +50,7 @@ jobs:
         cd /
         cp -R /inputs/CLIP /CLIP
         cp -R /inputs/TT /taming-transformers
-        git clone https://github.com/ViktorAlm/diffvg
+        git clone https://github.com/n-at/diffvg
         ls
 
         cp -R /inputs/CLIPIT /clipit
