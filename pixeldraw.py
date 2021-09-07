@@ -12,7 +12,7 @@ sys.path.append("/taming-transformers")
 #Run the script
 
 # prompts = "Darkness cannot drive out darkness. Only light can do that. #pixelart" #@param {type:"string"}
-prompts = "A deepfake app that lets you perform 1960s Portuguese love songs using only a selfie. #ui #pixelart" #@param {type:"string"}
+prompts = "A Soviet propaganda poster of a man swimming through dreams #graphicdesign #pixelart" #@param {type:"string"}
 
 aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
