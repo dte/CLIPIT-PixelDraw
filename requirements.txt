@@ -1,0 +1,17 @@
+ftfy
+regex
+tqdm
+omegaconf
+kornia
+imageio-ffmpeg
+einops
+torch-optimizer
+easydict
+braceexpand
+git+https://github.com/pvigier/perlin-numpy
+svgwrite
+svgpathtools
+cssutils
+numba
+torch-tools
+visdom
