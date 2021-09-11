@@ -10,6 +10,7 @@ sys.path.append("taming-transformers")
 sys.path.append("/taming-transformers")
 
 
+
 #Run the script
 
 # prompts = "Darkness cannot drive out darkness. Only light can do that. #pixelart" #@param {type:"string"}
