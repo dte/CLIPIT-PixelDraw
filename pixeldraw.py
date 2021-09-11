@@ -10,11 +10,10 @@ sys.path.append("taming-transformers")
 sys.path.append("/taming-transformers")
 
 
-
 #Run the script
 
 # prompts = "Darkness cannot drive out darkness. Only light can do that. #pixelart" #@param {type:"string"}
-prompts = "a yearly gathering of artists, designers, musicians, educators, writers, and technologists, sharing current projects and visions of the future #pixelart" #@param {type:"string"}
+prompts = "A poster for a party in a parking lot in Brooklyn with the party parrot emoji as the theme. Live music and graffiti murals. #pixelart" #@param {type:"string"}
 
 aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
