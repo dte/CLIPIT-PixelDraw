@@ -13,7 +13,7 @@ sys.path.append("/taming-transformers")
 #Run the script
 
 # prompts = "Darkness cannot drive out darkness. Only light can do that. #pixelart" #@param {type:"string"}
-prompts = "This house designed in the modern idiom by architect, Myron Goldfinger combines nature and home as one. The home presents cathedral ceilings, floor to ceiling glass, beautiful sunken living room and views of the lake and gardens #pixelart" #@param {type:"string"}
+prompts = "Party Parrot Party #pixelart" #@param {type:"string"}
 
 aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
