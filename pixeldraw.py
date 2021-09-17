@@ -13,7 +13,7 @@ sys.path.append("/taming-transformers")
 #Run the script
 
 # prompts = "Darkness cannot drive out darkness. Only light can do that. #pixelart" #@param {type:"string"}
-prompts = "Party parrot DJs a nightclub graffiti warehouse party in Brooklyn #pixelart" #@param {type:"string"}
+prompts = "Five dj’s rocking a lush warehouse party in Bushwick #pixelart" #@param {type:"string"}
 
 aspect = "widescreen" #@param ["widescreen", "square"]
 use_pixeldraw = True #@param {type:"boolean"}
