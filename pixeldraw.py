@@ -12,7 +12,7 @@ sys.path.append("/taming-transformers")
 
 #Run the script
 
-# prompts = "porta-potty moebius strip #pixelart" #@param {type:"string"}
+# prompts = "Monkey DJing on the beach #pixelart" #@param {type:"string"}
 # prompts = "Kitchen renovations made simple." #@param {type:"string"}
 prompts = "A web app that makes kitchen renovations simple." #@param {type:"string"}
 
