@@ -12,7 +12,7 @@ sys.path.append("/taming-transformers")
 
 #Run the script
 
-prompts = "You know the Earth is a fresh planet. Why worry about anything? #dharmabum #philosophy #sublime #pixelart"  #@param {type:"string"}
+prompts = "You know the Earth is a fresh planet. Why worry about anything? #dharmabum #philosophy #sublime #pixelart" #@param {type:"string"}
 # prompts = "Kitchen renovations made simple." #@param {type:"string"}
 # prompts = "A web app that makes kitchen renovations simple." #@param {type:"string"}
 
